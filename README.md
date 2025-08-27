@@ -13,7 +13,7 @@ z1_sdk → your fork of z1_sdk
 ## How to clone with submodules
 
 ```bash
-git clone --recurse-submodules git@github.com:prominent.johnson/unitree_ws.git
+git clone --recurse-submodules git@github.com:prominentjohnson/unitree_ws.git
 ```
 
 ## If you already cloned without submodules
