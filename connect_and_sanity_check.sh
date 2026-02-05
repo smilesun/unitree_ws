@@ -37,9 +37,7 @@ echo "Using interface: $IFACE"  # Print selected interface.
 echo "Current IPs on $IFACE:"  # Show current IP before reconfiguring.
 ip -o -4 addr show "$IFACE" || true  # Print IPv4 addresses if present.
 
-sudo ifconfig "$IFACE" down  # Bring interface down before changing IP.
-sudo ifconfig "$IFACE" "$HOST_IP_CIDR"  # Set the interface IP and netmask.
-sudo ifconfig "$IFACE" up  # Bring interface back up.
+sudo ./force_ip.sh "$IFACE" "$HOST_IP_CIDR"  # Force IP assignment via shared helper.
 
 echo "Pinging $ROBOT_IP to verify connectivity..."  # Announce ping check.
 ping -c 4 "$ROBOT_IP"  # Send 4 pings to confirm connectivity.
