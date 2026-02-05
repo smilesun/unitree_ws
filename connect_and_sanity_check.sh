@@ -2,7 +2,7 @@
 set -euo pipefail  # Exit on error, unset vars, or failed pipe segment.
 
 IFACE="${1:-}"  # Optional interface name (e.g., enp0s31f6).
-HOST_IP_CIDR="${2:-192.168.123.7/24}"  # Host IP/mask for the interface.
+HOST_IP_CIDR="${2:-192.168.123.7/24}"  # Host (your PC) IP on robot subnet; default matches Unitree 192.168.123.0/24 with a non-conflicting IP.
 ROBOT_IP="${3:-192.168.123.110}"  # Robot IP to ping for sanity check.
 
 if [[ $EUID -ne 0 ]]; then  # Require root to change network settings.
