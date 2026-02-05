@@ -8,15 +8,15 @@ if [[ -z "${ROS_DISTRO:-}" ]]; then
 fi
 source "/opt/ros/${ROS_DISTRO}/setup.bash"
 
-if [[ -d "unitree_ros_ws" ]]; then
-  (
-    cd unitree_ros_ws
-    if [[ -f devel/setup.bash ]]; then
-      source devel/setup.bash
-    else
-      echo "Warning: unitree_ros_ws/devel/setup.bash not found. Build may have failed." >&2
-    fi
-  )
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ws_path="${repo_root}/unitree_ros_ws"
+if [[ -d "$ws_path" ]]; then
+  if [[ -f "${ws_path}/devel/setup.bash" ]]; then
+    # Source in current shell so ROS_PACKAGE_PATH is updated for checks.
+    source "${ws_path}/devel/setup.bash"
+  else
+    echo "Warning: ${ws_path}/devel/setup.bash not found. Build may have failed." >&2
+  fi
 fi
 
 if rospack find unitree_gazebo >/dev/null 2>&1; then
