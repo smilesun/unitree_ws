@@ -1,5 +1,14 @@
 # Do not run this as one script, each block should be executed in separate console! 
 
+## create FIFO
+bash recreate_fifo.sh
+
+## set ip
+bash set_ip.sh
+
+## ping if connection is good
+bash ping.sh
+
 ## open communication
 `
 cd z1_controller/build
