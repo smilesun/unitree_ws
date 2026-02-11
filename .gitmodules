@@ -8,5 +8,4 @@
 	branch = main
 [submodule "z1_sdk"]
 	path = z1_sdk
-	url = git@github.com:prominentjohnson/z1_sdk.git
-	branch = main
+	url = git@github.com:smilesun/z1_sdk.git
