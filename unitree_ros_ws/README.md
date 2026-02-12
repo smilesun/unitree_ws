@@ -6,6 +6,37 @@ This workspace includes a Z1 SDK ROS wrapper and custom messages for low-level t
 - `unitree_z1_msgs`: ROS message definitions for Z1 low-level commands.
 - `z1_sdk_ros`: ROS node that wraps the Unitree Z1 SDK and sends low-level commands to real hardware.
 
+## z1 read panda state
+
+Important: The controller does not read Panda joint states. It reads Panda end‑effector pose via TF:
+
+- unitree_ws/unitree_ros_ws/src/z1_sdk_ros/src/z1_panda_xy_controller.cpp uses `tf_buffer_.lookupTransform(world_frame_,
+    panda_ee_frame_, ...).`
+    
+TF doesn’t “know” by itself — it relays what other nodes publish.
+         
+For Panda, the end‑effector pose is published by robot_state_publisher, which computes all link transforms from:
+
+- the URDF model (Panda’s kinematic tree), and
+-   - the current joint states (from the Franka driver).
+-   So the chain is:
+-   1. Franka driver publishes /joint_states
+-   2. robot_state_publisher reads the URDF + /joint_states
+-   3. It publishes TF for every link, including panda_link8
+-   4. TF lets you query world → panda_link8 once you also define world → panda_link0
+-   That’s why having robot_state_publisher and a world → panda_link0 transform is
+essential.
+Panda has 7 joints (7 DOF), but 8 links. Links are the rigid bodies between joints. In a serial chain:
+- 7 joints → 8 link frames (including the base and the end‑effector link).
+-   So panda_link8 is just the end‑effector link frame, not “an 8th joint.”
+
+Alternatively use joint‑state relaying instead, that is implemented in:
+  - unitree_ws/unitree_ros_ws/src/z1_panda_bridge/src/panda_state_relay.cpp (subscribes to
+  /panda/joint_states, republishes to /z1/
+    panda_joint_states).
+
+
+
 ## Message: `unitree_z1_msgs/LowCmd`
 Fixed-length arrays of 7 (6 joints + gripper):
 - `q`   joint position command (rad), gripper in index 6
