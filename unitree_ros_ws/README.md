@@ -52,6 +52,30 @@ Where it is used:
 Important: `unitree_z1_msgs/LowCmd` is a **message type**, not a topic.  
 The **topic name** is `/z1/lowcmd`. Any node can subscribe to `/z1/lowcmd` as long as it uses the same message type.
 
+## publishing a message to a topic means:
+
+  - A node sends a data packet (a ROS message) into a named channel (the topic).
+  -   - Any other node subscribed to that topic receives the message.
+-   So:
+-   - unitree_z1_msgs/LowCmd = the data type
+-   - /z1/lowcmd = the channel name
+-   - “Publish unitree_z1_msgs/LowCmd to /z1/lowcmd” = send a LowCmd data packet into that channel.
+  In your case:
+  
+    - The MPC node publishes unitree_z1_msgs/LowCmd on /z1/lowcmd.
+    -   - z1_lowcmd_node subscribes to /z1/lowcmd and forwards those commands to the Z1 SDK.
+  -   Think of a topic like a radio station name, and publishing like broadcasting a message on that
+  station.
+- 
+##  what happens if several node pubulish to a common topic
+
+• Then the topic becomes many‑to‑many:
+  - All messages from all publishers are interleaved on the same topic.
+  -   - Subscribers receive whichever messages arrive, in time order.
+  -   - There’s no built‑in arbitration — last message wins if they’re commanding the same robot.
+-   For command topics (like /z1/lowcmd), you generally want only one active publisher to avoid
+conflicts.
+
 ## Build
 ```bash
 cd /home/sunxd/robustCapture/unitree_ws/unitree_ros_ws
