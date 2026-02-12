@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="z1_panda_bridge" type="panda_state_relay" name="panda_state_relay" output="screen">
+    <param name="in_topic" value="/panda/joint_states"/>
+    <param name="out_topic" value="/z1/panda_joint_states"/>
+    <param name="latch" value="false"/>
+  </node>
+</launch>

@@ -1,10 +1,9 @@
-[submodule "unitree_ros_ws/src/unitree_ros"]
-	path = unitree_ros_ws/src/unitree_ros
-	url = git@github.com:prominentjohnson/unitree_ros.git
-	branch = main
 [submodule "z1_sdk"]
 	path = z1_sdk
 	url = git@github.com:smilesun/z1_sdk.git
 [submodule "z1_controller"]
 	path = z1_controller
 	url = git@github.com:smilesun/z1_controller.git
+[submodule "unitree_ros_ws/src/unitree_ros"]
+	path = unitree_ros_ws/src/unitree_ros
+	url = git@github.com:smilesun/unitree_ros.git
