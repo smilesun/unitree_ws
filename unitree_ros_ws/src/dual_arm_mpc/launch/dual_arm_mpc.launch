@@ -1,0 +1,23 @@
+<launch>
+  <arg name="panda_state_topic" default="/panda/joint_states"/>
+  <arg name="z1_state_topic" default="/z1/joint_states"/>
+  <arg name="cmd_topic" default="/z1/lowcmd"/>
+
+  <arg name="rate_hz" default="100.0"/>
+  <arg name="kp" default="20.0"/>
+  <arg name="kd" default="1.5"/>
+  <arg name="max_step" default="0.02"/>
+
+  <node pkg="dual_arm_mpc"
+        type="dual_arm_mpc_node.py"
+        name="dual_arm_mpc_node"
+        output="screen">
+    <param name="panda_state_topic" value="$(arg panda_state_topic)"/>
+    <param name="z1_state_topic" value="$(arg z1_state_topic)"/>
+    <param name="cmd_topic" value="$(arg cmd_topic)"/>
+    <param name="rate_hz" value="$(arg rate_hz)"/>
+    <param name="kp" value="$(arg kp)"/>
+    <param name="kd" value="$(arg kd)"/>
+    <param name="max_step" value="$(arg max_step)"/>
+  </node>
+</launch>

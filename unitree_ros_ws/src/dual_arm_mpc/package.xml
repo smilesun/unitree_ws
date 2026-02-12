@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>dual_arm_mpc</name>
+  <version>0.0.1</version>
+  <description>Dual-arm MPC example node consuming Panda and Z1 states.</description>
+
+  <maintainer email="sunxd@example.com">sunxd</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>rospy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>unitree_z1_msgs</depend>
+</package>
