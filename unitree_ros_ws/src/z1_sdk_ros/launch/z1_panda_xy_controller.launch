@@ -1,0 +1,18 @@
+<launch>
+  <node pkg="z1_sdk_ros" type="z1_panda_xy_controller" name="z1_panda_xy_controller" output="screen">
+    <param name="world_frame" value="world"/>
+    <param name="panda_ee_frame" value="panda_link8"/>
+    <param name="z1_base_frame" value="z1_base"/>
+    <param name="z_offset" value="0.0"/>
+    <param name="rate_hz" value="200"/>
+    <param name="tau_limit" value="30.0"/>
+    <param name="enable_gripper" value="true"/>
+    <param name="state_topic" value="/z1/joint_states"/>
+    <param name="use_state" value="true"/>
+    <!-- Optional: initial guess for IK (6 joints) -->
+    <!-- <rosparam param="q_init">[0, 0, 0, 0, 0, 0]</rosparam> -->
+    <!-- Optional gains (size 7) -->
+    <!-- <rosparam param="kp">[20, 30, 30, 20, 15, 10, 20]</rosparam> -->
+    <!-- <rosparam param="kd">[2000, 2000, 2000, 2000, 2000, 2000, 2000]</rosparam> -->
+  </node>
+</launch>

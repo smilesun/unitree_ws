@@ -1,0 +1,5 @@
+<launch>
+  <!-- Publish a fixed transform from world to z1_base -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="z1_base_static_tf"
+        args="0 0 -1 0 0 0 world z1_base"/>
+</launch>

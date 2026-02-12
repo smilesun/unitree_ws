@@ -1,0 +1,13 @@
+<launch>
+  <node pkg="z1_sdk_ros" type="z1_lowcmd_node" name="z1_lowcmd_node" output="screen">
+    <param name="topic" value="/z1/lowcmd"/>
+    <param name="state_topic" value="/z1/joint_states"/>
+    <!-- Optional: override joint names (size 7) -->
+    <!-- <rosparam param="joint_names">[joint1, joint2, joint3, joint4, joint5, joint6, gripper]</rosparam> -->
+    <param name="has_gripper" value="true"/>
+    <param name="cmd_timeout" value="0.2"/>
+    <param name="set_lowcmd_fsm" value="true"/>
+    <!-- If 0, uses 1/dt from SDK -->
+    <param name="rate_hz" value="0"/>
+  </node>
+</launch>

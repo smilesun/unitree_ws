@@ -1,0 +1,5 @@
+<launch>
+  <!-- Align world frame with Panda base frame (panda_link0) -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="panda_base_static_tf"
+        args="0 0 0 0 0 0 world panda_link0"/>
+</launch>

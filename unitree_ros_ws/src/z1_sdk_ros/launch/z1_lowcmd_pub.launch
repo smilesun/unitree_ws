@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="z1_sdk_ros" type="z1_lowcmd_pub" name="z1_lowcmd_pub" output="screen">
+    <param name="topic" value="/z1/lowcmd"/>
+    <param name="rate_hz" value="200"/>
+    <!-- Optional: set kp/kd arrays (size 7) -->
+    <!-- <rosparam param="kp">[20, 30, 30, 20, 15, 10, 20]</rosparam> -->
+    <!-- <rosparam param="kd">[2000, 2000, 2000, 2000, 2000, 2000, 2000]</rosparam> -->
+  </node>
+</launch>

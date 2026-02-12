@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>z1_sdk_ros</name>
+  <version>0.0.1</version>
+  <description>ROS wrapper for Unitree Z1 SDK low-level commands</description>
+  <maintainer email="you@example.com">You</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>unitree_z1_msgs</build_depend>
+  <build_depend>tf2</build_depend>
+  <build_depend>tf2_ros</build_depend>
+  <build_depend>tf2_geometry_msgs</build_depend>
+
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>unitree_z1_msgs</exec_depend>
+  <exec_depend>tf2</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>tf2_geometry_msgs</exec_depend>
+</package>
