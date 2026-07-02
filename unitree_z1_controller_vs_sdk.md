@@ -1,0 +1,2 @@
+- controller is responsble to communicate with the onboard computer
+- sdk is for progrmaming torque control
