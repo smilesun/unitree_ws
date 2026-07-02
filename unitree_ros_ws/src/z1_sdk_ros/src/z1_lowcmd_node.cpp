@@ -1,4 +1,5 @@
 #include <ros/ros.h>
+#include <algorithm>
 #include <array>
 #include <mutex>
 #include <vector>
@@ -8,7 +9,6 @@
 #include "unitree_arm_sdk/control/unitreeArm.h"
 
 using UNITREE_ARM::unitreeArm;
-using UNITREE_ARM::Vec6;
 using UNITREE_ARM::ArmFSMState;
 
 namespace {
@@ -18,6 +18,13 @@ Vec6 toVec6(const double *data) {
     v[i] = data[i];
   }
   return v;
+}
+
+void copyVectorToArray(const std::vector<double>& source, std::array<double, 7>& target) {
+  const int count = std::min<int>(source.size(), target.size());
+  for (int i = 0; i < count; ++i) {
+    target[i] = source[i];
+  }
 }
 }
 
@@ -53,8 +60,8 @@ class Z1LowcmdNode {
     }
 
     // Initialize gains from SDK defaults.
-    kp_ = arm_._ctrlComp->lowcmd->kp;
-    kd_ = arm_._ctrlComp->lowcmd->kd;
+    copyVectorToArray(arm_._ctrlComp->lowcmd->kp, kp_);
+    copyVectorToArray(arm_._ctrlComp->lowcmd->kd, kd_);
 
     // Stop background thread; we drive send/recv in the loop.
     arm_.sendRecvThread->shutdown();
@@ -65,7 +72,7 @@ class Z1LowcmdNode {
     for (int i = 0; i < 6; ++i) {
       last_q_[i] = q0[i];
     }
-    last_gripper_q_ = arm_.lowstate->getGripperQ();
+    last_q_[6] = arm_.lowstate->getGripperQ();
     last_cmd_time_ = ros::Time::now();
   }
 

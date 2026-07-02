@@ -2,3 +2,7 @@ unitree_ros_ws/.catkin_workspace
 unitree_ros_ws/build/
 unitree_ros_ws/devel/
 unitree_ros_ws/src/CMakeLists.txt
+**/__pycache__/
+*.pyc
+unitree_ros_ws/src/unitree_egg_catching__symlink_to_root
+RAL_2026_SURE/

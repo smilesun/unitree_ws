@@ -10,8 +10,6 @@
 #include "unitree_z1_msgs/LowCmd.h"
 #include "unitree_arm_sdk/model/ArmModel.h"
 
-using UNITREE_ARM::Vec6;
-using UNITREE_ARM::HomoMat;
 using UNITREE_ARM::Z1Model;
 
 namespace {
