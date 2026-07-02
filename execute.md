@@ -24,5 +24,5 @@ cd z1_sdk/build
 ## provoke both robots
 
 `
-./go.sh
+./go.sh  # this will also retract unitree back to initial position
 `
